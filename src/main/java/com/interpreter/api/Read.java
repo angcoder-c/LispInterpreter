@@ -53,6 +53,35 @@ public class Read {
      * @return una lista de strings con los tokens
      */
     public List<String> read_str(String input) {
-        return new ArrayList<String>();
+        List<String> tokens = new ArrayList<>();
+        //Se convierte la expresión a un array de caracteres
+        char[] caracteres = input.toCharArray();
+        StringBuilder acumulado = new StringBuilder(); // Para formar números y variables complejos
+
+        for (char x : caracteres) {
+            if ((x >= '0' && x <= '9') || (x >= 'A' && x <= 'Z') || (x >= 'a' && x <= 'z')) {
+                // Si es un número o letra lo agregamos al acumulador
+                acumulado.append(x);
+            } else {
+                // Si encontramos un espacio o un paréntesis, guardamos el token acumulado
+                if (acumulado.length() > 0) {
+                    tokens.add(acumulado+"");
+                    acumulado.setLength(0); // Reiniciar acumulado
+                }
+                
+                // Agregamos el paréntesis u operador como token separado
+                if (x != ' ') {  //ignoramos espacios
+                    tokens.add(x + "");  
+                }
+            }
+        }
+        
+        // Si al final quedó un token pendiente (en el caso que termine en un número o variable)
+        if (acumulado.length() > 0) {
+            tokens.add(acumulado+"");
+        }
+
+        return tokens;
     }
+
 }
