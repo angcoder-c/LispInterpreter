@@ -1,4 +1,5 @@
 # Mini Common Lisp Interpreter 
 
-![image](https://github.com/user-attachments/assets/e7cf1594-fb66-4d6d-9661-cfd7423410cb)
+![image](https://github.com/user-attachments/assets/ff4ad4ad-5dd0-491f-9bf3-3617b641d3a3)
+
 
