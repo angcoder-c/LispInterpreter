@@ -54,9 +54,10 @@ public class Read {
      */
     public List<String> read_str(String input) {
         List<String> tokens = new ArrayList<>();
+
         //Se convierte la expresión a un array de caracteres
         char[] caracteres = input.toCharArray();
-        StringBuilder acumulado = new StringBuilder(); // Para formar números y variables complejos
+        StringBuilder acumulado = new StringBuilder(); 
 
         for (char x : caracteres) {
             if ((x >= '0' && x <= '9') || (x >= 'A' && x <= 'Z') || (x >= 'a' && x <= 'z')) {
@@ -70,7 +71,7 @@ public class Read {
                 }
                 
                 // Agregamos el paréntesis u operador como token separado
-                if (x != ' ') {  //ignoramos espacios
+                if (x != ' ') {
                     tokens.add(x + "");  
                 }
             }
