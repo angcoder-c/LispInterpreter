@@ -35,7 +35,7 @@ mvn -Dtest=AppTest test
 
 # Desarrollo
 
-## Paso 0: Lexer
+## Paso 1: Lexer
 
 Para inicial, se implementó un Lexer en la clase `Read.java`. Encargada de tokenizar y validar una instrucción de Lisp
 
