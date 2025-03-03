@@ -1,5 +1,6 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class LexerTestEntrega2 {
 
@@ -72,17 +73,32 @@ public class LexerTestEntrega2 {
         return tokens;
     }
 
+    // @author Angel Chavez
     public static void main(String[] args) {
-        String lisp = "(QUOTE (+ (* 1 2) (/ 3 4)))";
-        LexerTestEntrega2 read = new LexerTestEntrega2();
-        boolean correct = read.verificarPerentesis(lisp);
-        List<String> tokens = read.read_str(lisp);
+        
+        
+        String option = "";
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Codigo " + (correct ? "valido" : "invalido"));
-        System.out.println("Tokens: ");
+        while (!option.equals("0")) {
+            System.out.println("Ingresa codigo Lisp> ");
+            String lisp = sc.nextLine();
 
-        for (int i=0; i<tokens.size(); i++) {
-            System.out.print(tokens.get(i) + ",");
+            LexerTestEntrega2 read = new LexerTestEntrega2();
+            boolean correct = read.verificarPerentesis(lisp);
+            List<String> tokens = read.read_str(lisp);
+
+            System.out.println("Codigo " + (correct ? "valido" : "invalido"));
+            System.out.println("Tokens: ");
+
+            for (int i=0; i<tokens.size(); i++) {
+                System.out.print("\"" + tokens.get(i) + "\"" + ",");
+            }
+
+            System.out.println("\n\n(0) Salir\n(Enter) Continuar");
+            option = sc.nextLine();
         }
+
+        
     }
 }
