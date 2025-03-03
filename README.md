@@ -2,7 +2,7 @@
 
 ## Diagrama de clases UML
 
-![image](https://github.com/user-attachments/assets/ff4ad4ad-5dd0-491f-9bf3-3617b641d3a3)
+![image](https://github.com/user-attachments/assets/7d520af9-067b-4655-9829-3d27819002f9)
 
 # Ejecución
 
