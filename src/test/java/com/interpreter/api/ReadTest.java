@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class ReadTest {
     @Test
     public void verificarPerentesisTest() {
-        Read read = new Read();
+        Lexer read = new Lexer();
         boolean valid = read.verificarPerentesis("(+ (+ 1 1) (+ 1 1))");
         boolean invalid = read.verificarPerentesis("(+ (+ 1 1 (+ 1 1))");
         
@@ -20,7 +20,7 @@ public class ReadTest {
 
     @Test
     public void separarStringTest () {
-        Read read = new Read();
+        Lexer read = new Lexer();
         List<String> valid = read.read_str("(+ (+ 1 1) (+ 1 1))");
 
         assertEquals(valid, List.of("(", "+", "(", "+", "1", "1", ")", "(", "+", "1", "1", ")", ")"));

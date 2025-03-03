@@ -14,7 +14,7 @@ public class App {
             System.out.print(">>> ");
             String lisp = sc.nextLine();
 
-            Read read = new Read();
+            Lexer read = new Lexer();
             boolean correct = read.verificarPerentesis(lisp);
             List<String> tokens = read.read_str(lisp);
 

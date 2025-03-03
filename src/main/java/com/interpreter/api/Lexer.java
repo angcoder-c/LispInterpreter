@@ -14,7 +14,7 @@ import java.util.List;
  * Descripción: Lexer para el interprete de Lisp
  */
 
-public class Read {
+public class Lexer {
 
     /**
      * @author Julián Divas
