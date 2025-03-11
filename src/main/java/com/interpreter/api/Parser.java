@@ -47,6 +47,29 @@ public class Parser {
      */
     private LispExpression parseExpression(List<String> tokens, int[] index) {
         
+        // obtiene un token
+        String token = tokens.get(index[0]++);
+        
+        // si es una lista
+        if (token.equals("(")) {
+            List<LispExpression> elementos = new ArrayList<>();
+    
+            while (
+                index[0] < tokens.size() && 
+                !tokens.get(index[0]).equals(")")
+            ) {
+                // si no está fuera de rango y el ultimo token no es )
+                LispExpression expr = parseExpression(tokens, index);
+                elementos.add(expr);
+            }
+
+            index[0]++; // se salta )
+            return LispExpressionFactory.createList(elementos);
+        }
+
+        else {
+            return LispExpressionFactory.createAtom(token);
+        }
     }
     
 }

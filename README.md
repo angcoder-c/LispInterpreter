@@ -25,7 +25,7 @@ mvn package
 **Correr**
 
 ```bash
-mvn exec:java '-Dexec.mainClass="com.api.App"'
+mvn exec:java '-Dexec.mainClass="com.interpreter.api.App"'
 ```
 
 **Test**
