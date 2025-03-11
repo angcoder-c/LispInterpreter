@@ -21,11 +21,11 @@ public class LispList implements LispExpression {
 
     @Override
     public String toString() {
-        String result = "(";
+        String result = "[";
         for (int i = 0; i < elementos.size(); i++) {
             result += elementos.get(i).toString() + " ";  
         }
-        return result + ")";
+        return result + "]";
     }
 }
 

@@ -14,16 +14,8 @@ public class App {
             System.out.print(">>> ");
             String lisp = sc.nextLine();
 
-            Lexer read = new Lexer();
-            boolean correct = read.verificarPerentesis(lisp);
-            List<String> tokens = read.read_str(lisp);
-
-            System.out.println("Codigo " + (correct ? "valido" : "invalido"));
-            System.out.println("Tokens: ");
-
-            for (int i=0; i<tokens.size(); i++) {
-                System.out.print("\"" + tokens.get(i) + "\"" + ",\n");
-            }
+            Parser parser = new Parser();
+            System.out.println(parser.parse(lisp));
 
             option = lisp;
         }

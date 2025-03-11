@@ -1,6 +1,10 @@
 package com.interpreter.api;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.interpreter.api.Expresion.LispExpression;
+import com.interpreter.api.Expresion.LispExpressionFactory;
 
 public class Parser {
     /**
@@ -18,4 +22,31 @@ public class Parser {
         }
         return false;
     }
+
+    /**
+     * método principal del parser.
+     * @param list String con el código de lisp a parsear
+     * @return LispExpression que representa a los elementos de código lisp 
+     */
+    public LispExpression parse(String lisp) {
+        Lexer lexer = new Lexer();
+
+        if (!lexer.verificarPerentesis(lisp)) {
+            return LispExpressionFactory.createAtom("ERROR: lista no cerrada");
+        }
+
+        List<String> tokens = lexer.read_str(lisp);
+        int[] index = {0};
+
+        return parseExpression(tokens, index);
+    }
+
+    /**
+     * metodo para recorrer la lista de tokens
+     * recursivo
+     */
+    private LispExpression parseExpression(List<String> tokens, int[] index) {
+        
+    }
+    
 }
