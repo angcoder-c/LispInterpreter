@@ -2,9 +2,8 @@ package com.interpreter.api;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.Test;
+
 import com.interpreter.api.Expresion.LispExpression;
 
 /*
@@ -24,32 +23,27 @@ public class ParserTest {
     //Prueba con Atom como número
     @Test
     public void numeroAtom(){
-        List<String> tokens = Arrays.asList("42");
-        assertTrue(Parser.isAtom(tokens));
+        assertTrue(Parser.isAtom("42"));
     }
 
     //Prueba con Atom como String
     public void stringAtom(){
-        List<String> tokens = Arrays.asList("Frijolitos");
-        assertTrue(Parser.isAtom(tokens));
+        assertTrue(Parser.isAtom("Frijolitos"));
     }
 
     //Prueba con paréntesis de apertura
     public void aperturaAtom(){
-        List<String> tokens = Arrays.asList("(");
-        assertTrue(Parser.isAtom(tokens));
+        assertTrue(Parser.isAtom("("));
     }
 
     //Prueba con paréntesis de cerradura
     public void cerraduraAtom(){
-        List<String> tokens = Arrays.asList(")");
-        assertTrue(Parser.isAtom(tokens));
+        assertTrue(Parser.isAtom(")"));
     }
 
     //Prueba con una lista
     public void listaAtom(){
-        List<String> tokens = Arrays.asList("Frijolitos", "54");
-        assertFalse(Parser.isAtom(tokens));
+        assertFalse(Parser.isAtom("Frijolitos 54"));
     }
 
     //Pruebas del método Parse
@@ -68,7 +62,7 @@ public class ParserTest {
         Parser parser = new Parser();
         String lispCode = "(+ 1 4";
         LispExpression result = parser.parse(lispCode);
-        assertEquals("ERROR: lista no cerrada", result.toString());
+        assertEquals("ERROR: error de sintaxis", result.toString());
     }
 
     //Prueba con un Atom
@@ -95,7 +89,7 @@ public class ParserTest {
         Parser parser = new Parser();
         String lispCode = "(+ 1 (* 2 3))";
         LispExpression result = parser.parse(lispCode);
-        assertEquals("[+ 1 [* 2 3 ]]", result.toString());
+        assertEquals("[+ 1 [* 2 3 ] ]", result.toString());
     }
 
     //Prueba para espacios extra

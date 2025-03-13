@@ -1,6 +1,7 @@
 package com.interpreter.api;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.interpreter.api.Expresion.LispExpression;
@@ -12,7 +13,9 @@ public class Parser {
      * @param tokens una lista <List> que reiva si una expresion es un átomo (numero string, etc)
      * @return true si es un átomo, false si lo és
      */
-    public static boolean isAtom(List<String> tokens) {
+    public static boolean isAtom(String lisp) {
+        Lexer lexer = new Lexer();
+        List<String> tokens = lexer.read_str(lisp);
         if (
             tokens.size() == 1 && 
             !tokens.get(0).equals("(") && 
@@ -31,8 +34,12 @@ public class Parser {
     public LispExpression parse(String lisp) {
         Lexer lexer = new Lexer();
 
-        if (!lexer.verificarPerentesis(lisp)) {
-            return LispExpressionFactory.createAtom("ERROR: lista no cerrada");
+        if (isAtom(lisp)){
+            return parseExpression(Arrays.asList(lisp), new int[] {0});
+        }
+
+        if (!lexer.verificarPerentesis(lisp) && !isAtom(lisp)) {
+            return LispExpressionFactory.createAtom("ERROR: error de sintaxis");
         }
 
         List<String> tokens = lexer.read_str(lisp);
