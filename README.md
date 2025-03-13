@@ -52,6 +52,15 @@ Se compone de dos métodos escenciales:
 
 ## Paso 2: Parser
 
+Se implementaron las siguientes expresiones de Lisp, en el paquete `expression` que implementan la interfaz `LisoExpression`:
+- `LispAtom`: representa un átomo de lisp.
+- `LispList`: representa una lista de lisp.
+
+En la clase `Parser.java` en donde se define los métodos:
+- `isAtom`: verifica que un string sea un átomo de lisp
+- `parse`: método principal del parser, en donde se valida el código de entrada y se tokeniza.
+- `parseExpression`: método que recorre la lista de tokens de forma recursiva.
+
 **Funcionamiento**
 
 ![parser](https://github.com/user-attachments/assets/fa0b2f8b-f595-4c2f-8026-cc1371bf7e9f)
