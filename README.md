@@ -4,7 +4,7 @@
 
 ## Diagrama de clases UML
 
-![image](https://github.com/user-attachments/assets/7d520af9-067b-4655-9829-3d27819002f9)
+![image](https://github.com/user-attachments/assets/6762c10d-1518-485c-9038-8a66f23edccf)
 
 # Ejecución
 
@@ -52,6 +52,9 @@ Se compone de dos métodos escenciales:
 
 ## Paso 2: Parser
 
+**Funcionamiento**
+
+![parser](https://github.com/user-attachments/assets/fa0b2f8b-f595-4c2f-8026-cc1371bf7e9f)
 
 
 
