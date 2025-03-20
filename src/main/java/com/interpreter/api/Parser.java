@@ -8,6 +8,12 @@ import com.interpreter.api.Expresion.LispExpression;
 import com.interpreter.api.Expresion.LispExpressionFactory;
 
 public class Parser {
+    private LispExpressionFactory factory;
+
+    public Parser (Environment contexto) {
+        this.factory = new LispExpressionFactory(contexto);
+    }
+
     /**
      * @author Angel chavez
      * @param tokens una lista <List> que reiva si una expresion es un átomo (numero string, etc)
@@ -32,6 +38,11 @@ public class Parser {
      * @return LispExpression que representa a los elementos de código lisp 
      */
     public LispExpression parse(String lisp) {
+
+        if (lisp == null || lisp.trim().isEmpty()) {
+            return this.factory.createAtom("ERROR: expresión vacia");
+        }
+
         Lexer lexer = new Lexer();
 
         if (isAtom(lisp)){
@@ -39,7 +50,7 @@ public class Parser {
         }
 
         if (!lexer.verificarPerentesis(lisp) && !isAtom(lisp)) {
-            return LispExpressionFactory.createAtom("ERROR: error de sintaxis");
+            return this.factory.createAtom("ERROR: error de sintaxis");
         }
 
         List<String> tokens = lexer.read_str(lisp);
@@ -53,10 +64,9 @@ public class Parser {
      * recursivo
      */
     private LispExpression parseExpression(List<String> tokens, int[] index) {
-        
         // obtiene un token
         String token = tokens.get(index[0]++);
-        
+
         // si es una lista
         if (token.equals("(")) {
             List<LispExpression> elementos = new ArrayList<>();
@@ -71,11 +81,11 @@ public class Parser {
             }
 
             index[0]++; // se salta )
-            return LispExpressionFactory.createList(elementos);
+            return this.factory.createList(elementos);
         }
 
         else {
-            return LispExpressionFactory.createAtom(token);
+            return this.factory.createAtom(token);
         }
     }
     

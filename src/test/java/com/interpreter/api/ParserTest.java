@@ -50,16 +50,18 @@ public class ParserTest {
     //Prueba con una expresión lisp valida
     @Test
     public void LispValidaParse() {
-        Parser parser = new Parser();
+        Environment contexto = new Environment();
+        Parser parser = new Parser(contexto);
         String lispCode = "(+ 6 9)";
         LispExpression result = parser.parse(lispCode);
-        assertEquals("[+ 6 9 ]", result.toString());
+        assertEquals("(+ 6 9)", result.toString());
     }
 
     //Prueba con una expresión lisp sin cerrar
     @Test
     public void LispSinCerradura() {
-        Parser parser = new Parser();
+        Environment contexto = new Environment();
+        Parser parser = new Parser(contexto);
         String lispCode = "(+ 1 4";
         LispExpression result = parser.parse(lispCode);
         assertEquals("ERROR: error de sintaxis", result.toString());
@@ -68,7 +70,8 @@ public class ParserTest {
     //Prueba con un Atom
     @Test
     public void LispAtom() {
-        Parser parser = new Parser();
+        Environment contexto = new Environment();
+        Parser parser = new Parser(contexto);
         String lispCode = "65";
         LispExpression result = parser.parse(lispCode);
         assertEquals("65", result.toString());
@@ -77,28 +80,31 @@ public class ParserTest {
     //Prueba con lista vacia
     @Test
     public void testListaVacia() {
-        Parser parser = new Parser();
+        Environment contexto = new Environment();
+        Parser parser = new Parser(contexto);
         String lispCode = "()";
         LispExpression result = parser.parse(lispCode);
-        assertEquals("[]", result.toString());
+        assertEquals("()", result.toString());
     }
 
     //Prueba para expresiones anidadas
     @Test
     public void testExpresionAnidada() {
-        Parser parser = new Parser();
+        Environment contexto = new Environment();
+        Parser parser = new Parser(contexto);
         String lispCode = "(+ 1 (* 2 3))";
         LispExpression result = parser.parse(lispCode);
-        assertEquals("[+ 1 [* 2 3 ] ]", result.toString());
+        assertEquals("(+ 1 (* 2 3))", result.toString());
     }
 
     //Prueba para espacios extra
     @Test
     public void testEspaciosExtra() {
-        Parser parser = new Parser();
+        Environment contexto = new Environment();
+        Parser parser = new Parser(contexto);
         String lispCode = "(  +   3   7 )";
         LispExpression result = parser.parse(lispCode);
-        assertEquals("[+ 3 7 ]", result.toString());
+        assertEquals("(+ 3 7)", result.toString());
     }
     
 }  

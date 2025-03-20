@@ -9,7 +9,7 @@ import java.util.List;
  * Ing. Douglas Barrios
  * @author: Julián Divas
  * Creación: 26/02/2025
- * última modificación: 26/02/2025
+ * última modificación: 19/03/2025
  * File Name: Read.java
  * Descripción: Lexer para el interprete de Lisp
  */
@@ -48,41 +48,95 @@ public class Lexer {
     }
 
     /**
+     * tokeniza una cadena de código Lisp.
+     *
      * @author Marcela Castillo
-     * @param String input string con codigo lisp para tokenizar
-     * @return una lista de strings con los tokens
+     * @param input String con código Lisp para tokenizar.
+     * @return Una lista de strings con los tokens.
      */
     public List<String> read_str(String input) {
         List<String> tokens = new ArrayList<>();
-
-        //Se convierte la expresión a un array de caracteres
         char[] caracteres = input.toCharArray();
-        StringBuilder acumulado = new StringBuilder(); 
+        StringBuilder acumulado = new StringBuilder();
+        boolean stringFlag = false;
 
-        for (char x : caracteres) {
-            if ((x >= '0' && x <= '9') || (x >= 'A' && x <= 'Z') || (x >= 'a' && x <= 'z')) {
-                // Si es un número o letra lo agregamos al acumulador
-                acumulado.append(x);
-            } else {
-                // Si encontramos un espacio o un paréntesis, guardamos el token acumulado
-                if (acumulado.length() > 0) {
-                    tokens.add(acumulado+"");
-                    acumulado.setLength(0); // Reiniciar acumulado
+        // operadores especiales
+        List<String> operadores = new ArrayList<>();
+        operadores.add("<=");
+        operadores.add(">=");
+        operadores.add("==");
+        operadores.add("!=");
+        operadores.add("+");
+        operadores.add("-");
+        operadores.add("*");
+        operadores.add("/");
+        operadores.add("%");
+
+        for (int i = 0; i < caracteres.length; i++) {
+            char x = caracteres[i];
+
+            // verifica operadores especiales
+            if (i + 1 < caracteres.length) {
+                String posibleOperador = "" + x + caracteres[i + 1];
+                if (operadores.contains(posibleOperador)) {
+                    if (acumulado.length() > 0) {
+                        tokens.add(acumulado.toString());
+                        acumulado.setLength(0);
+                    }
+                    tokens.add(posibleOperador);
+                    i++; 
+                    continue;
                 }
-                
-                // Agregamos el paréntesis u operador como token separado
-                if (x != ' ') {
-                    tokens.add(x + "");  
+            }
+
+            // cierre de string
+            if (stringFlag) {
+                acumulado.append(x);
+                if (x == '"') {
+                    tokens.add(acumulado.toString());
+                    acumulado.setLength(0);
+                    stringFlag = false;
+                }
+                continue;
+            }
+    
+            // strings
+            if (x == '"') {
+                if (acumulado.length() > 0) {
+                    tokens.add(acumulado.toString());
+                    acumulado.setLength(0);
+                }
+                acumulado.append(x);
+                stringFlag = true;
+                continue;
+            }
+
+            // numeros negativos
+            if (x == '-' && i + 1 < caracteres.length && Character.isDigit(caracteres[i + 1])) {
+                acumulado.append(x);
+            }
+            
+            else if (Character.isLetterOrDigit(x)) {
+                acumulado.append(x);
+            }
+
+            else {
+                if (acumulado.length() > 0) {
+                    tokens.add(acumulado.toString());
+                    acumulado.setLength(0);
+                }
+                if (!Character.isWhitespace(x)) {
+                    tokens.add(String.valueOf(x));
                 }
             }
         }
-        
-        // Si al final quedó un token pendiente (en el caso que termine en un número o variable)
+
         if (acumulado.length() > 0) {
-            tokens.add(acumulado+"");
+            tokens.add(acumulado.toString());
         }
 
         return tokens;
     }
+
 
 }
