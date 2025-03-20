@@ -30,7 +30,7 @@ public class OperacionIf implements LispOperator {
 
     @Override
     public boolean supports(String symbol) {
-        return symbol.equals("if");
+        return symbol.toLowerCase().equals("if");
     }
 
     @Override

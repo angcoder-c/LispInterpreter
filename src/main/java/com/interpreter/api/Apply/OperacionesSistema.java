@@ -27,7 +27,7 @@ public class OperacionesSistema implements LispOperator {
 
     @Override
     public boolean supports(String simbolo) {
-        return simbolo.equals("exit");
+        return simbolo.toLowerCase().equals("exit");
     }
 
     @Override

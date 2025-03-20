@@ -29,7 +29,7 @@ public class OperacionCond implements LispOperator {
     
     @Override
     public boolean supports(String symbol) {
-        return symbol.equals("cond");
+        return symbol.toLowerCase().equals("cond");
     }
     
     @Override

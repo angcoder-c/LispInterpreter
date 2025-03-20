@@ -27,7 +27,7 @@ public class OperacionQuote implements LispOperator {
 
     @Override
     public boolean supports(String simbolo) {
-        return simbolo.equals("quote");
+        return simbolo.toLowerCase().equals("quote");
     }
 
     @Override

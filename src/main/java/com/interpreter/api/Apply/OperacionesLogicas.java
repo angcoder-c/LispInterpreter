@@ -32,9 +32,9 @@ public class OperacionesLogicas implements LispOperator {
     @Override
     public boolean supports(String simbolo) {
         return (
-            simbolo.equals("and") || 
-            simbolo.equals("or") || 
-            simbolo.equals("not")
+            simbolo.toLowerCase().equals("and") || 
+            simbolo.toLowerCase().equals("or") || 
+            simbolo.toLowerCase().equals("not")
         );
     }
 

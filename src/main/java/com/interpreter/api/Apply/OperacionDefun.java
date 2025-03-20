@@ -31,7 +31,7 @@ public class OperacionDefun implements LispOperator {
 
     @Override
     public boolean supports(String symbol) {
-        return symbol.equals("defun");
+        return symbol.toLowerCase().equals("defun");
     }
 
     @Override
