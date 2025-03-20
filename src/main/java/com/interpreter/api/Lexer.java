@@ -166,7 +166,6 @@ public class Lexer {
             tokens.add(acumulado.toString());
         }
     
-        System.out.println(tokens.toString());
         return tokens;
     }
        
