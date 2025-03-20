@@ -36,14 +36,14 @@ public class LispList implements LispExpression {
         this.elementos = elementos;
         this.contexto = contexto;
         this.factory = new LispExpressionFactory(this.contexto);
-        inicializarStd();
+        initializeOperators();
     }
 
     /**
      * metodo que agrega los operadores del lenguaje al arreglo
      * de operadores, que será iterado para evaluar el código
      */
-    private void inicializarStd() {
+    private void initializeOperators() {
         this.operadores.clear();
         this.operadores.add(new OperacionesAritmeticas(this.contexto));
         this.operadores.add(new OperacionQuote(this.contexto));
@@ -65,7 +65,7 @@ public class LispList implements LispExpression {
     public void setContexto(Environment nuevoContexto) {
         this.contexto = nuevoContexto;
         this.factory = new LispExpressionFactory(nuevoContexto);
-        inicializarStd();
+        initializeOperators();
     }
 
     /**

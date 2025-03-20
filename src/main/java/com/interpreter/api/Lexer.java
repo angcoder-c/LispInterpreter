@@ -62,22 +62,12 @@ public class Lexer {
         boolean numeroFlag = false;
         boolean puntoFlag = false;
     
-        // operadores especiales
-        List<String> operadores = new ArrayList<>();
-        operadores.add("<=");
-        operadores.add(">=");
-        operadores.add("==");
-        operadores.add("!=");
-        operadores.add("+");
-        operadores.add("-");
-        operadores.add("*");
-        operadores.add("/");
-        operadores.add("%");
+        List<String> operadores = List.of("<=", ">=", "==", "!=", "+", "-", "*", "/", "%");
     
         for (int i = 0; i < caracteres.length; i++) {
             char x = caracteres[i];
     
-            // verifica operadores especiales
+            // verifica operadores dobles
             if (i + 1 < caracteres.length) {
                 String posibleOperador = "" + x + caracteres[i + 1];
                 if (operadores.contains(posibleOperador)) {
@@ -91,7 +81,7 @@ public class Lexer {
                 }
             }
     
-            // cierre de string
+            // strings
             if (stringFlag) {
                 acumulado.append(x);
                 if (x == '"') {
@@ -102,7 +92,6 @@ public class Lexer {
                 continue;
             }
     
-            // strings
             if (x == '"') {
                 if (acumulado.length() > 0) {
                     tokens.add(acumulado.toString());
@@ -113,43 +102,73 @@ public class Lexer {
                 continue;
             }
     
-            // numeros negativos
-            if (x == '-' && i + 1 < caracteres.length && Character.isDigit(caracteres[i + 1])) {
-                acumulado.append(x);
-                numeroFlag = true;
-            }
-            // numeros y decimales
-            else if (
-                Character.isDigit(x) || 
-                (
-                    x == '.' && 
-                    numeroFlag && 
-                    !puntoFlag
-                )
-            ) {
-                if (x == '.') puntoFlag = true;
-                acumulado.append(x);
-                numeroFlag = true;
-            }
-            else {
+            // paréntesis como tokens separados
+            if (x == '(' || x == ')') {
                 if (acumulado.length() > 0) {
                     tokens.add(acumulado.toString());
                     acumulado.setLength(0);
-                    numeroFlag = false;
-                    puntoFlag = false;
                 }
-                if (!Character.isWhitespace(x)) {
-                    tokens.add(String.valueOf(x));
-                }
+                tokens.add(String.valueOf(x));
+                continue;
             }
+    
+            // espacios = fin de token
+            if (Character.isWhitespace(x)) {
+                if (acumulado.length() > 0) {
+                    tokens.add(acumulado.toString());
+                    acumulado.setLength(0);
+                }
+                numeroFlag = false;
+                puntoFlag = false;
+                continue;
+            }
+    
+            // números o negativos válidos
+            if (Character.isDigit(x) || (x == '.' && numeroFlag && !puntoFlag)) {
+                if (x == '.') puntoFlag = true;
+                acumulado.append(x);
+                numeroFlag = true;
+                continue;
+            }
+    
+            if (x == '-' && i + 1 < caracteres.length && Character.isDigit(caracteres[i + 1]) && acumulado.length() == 0) {
+                // negativo solo si no hay símbolo acumulado
+                acumulado.append(x);
+                numeroFlag = true;
+                continue;
+            }
+    
+            // parte de un símbolo: letra, número o guion (en contexto simbólico)
+            if (Character.isLetter(x) || Character.isDigit(x) || x == '-') {
+                acumulado.append(x);
+                continue;
+            }
+    
+            // operadores simples
+            if (operadores.contains(String.valueOf(x))) {
+                if (acumulado.length() > 0) {
+                    tokens.add(acumulado.toString());
+                    acumulado.setLength(0);
+                }
+                tokens.add(String.valueOf(x));
+                continue;
+            }
+    
+            // cualquier otro carácter
+            if (acumulado.length() > 0) {
+                tokens.add(acumulado.toString());
+                acumulado.setLength(0);
+            }
+            tokens.add(String.valueOf(x));
         }
     
         if (acumulado.length() > 0) {
             tokens.add(acumulado.toString());
         }
     
+        System.out.println(tokens.toString());
         return tokens;
     }
-
+       
 
 }
