@@ -73,6 +73,19 @@ El intérprete soporta las siguientes operadores de Lisp:
 
 ![image](https://github.com/user-attachments/assets/25eed338-7150-42ff-bebf-6b2e49c2f59d)
 
+# Estructuras utilizadas del Java Collection Framework
+
+Se hizo uso de la interface List gracias a su trabajo con secuencias de elementos, forma en las que se trabaja siempre en Lisp. Además, nos permite trabajar con varias de sus implementaciones, como ArrayList que es eficiente para acceso aleatorio e iteración. Por otro lado, las Lists son ideales para los algoritmos recursivos requeridos en nuestro intérprete.
+Referencias para utilizar List y ArrayList: 
+https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+
+Además, se utilizaron HashMaps para el Environment, donde en uno se almacenaron las variables creadas por los usuarios como los valores asociados y en otro las funciones creadas por los usuarios. Nos decantamos por el uso de HashMap gracias a su rápido acceso a los elementos en base a sus claves, su facilidad de uso y entendimiento también fue un factor clave por el que elegimos esta colleción. Al usar dos Hashmaps, uno para funciones y otro para variables, separamos responsabilidades en cada uno de ellos, haciendo de nuestro código más legible y de fácil comprensión. Además, los HashMaps son escalables y permiten manejar grandes cantidades de datos sin perder su eficiencia.
+Referencias para utilizar HashMap:
+https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
+
+List y HashMap son estructuras de datos muy eficientes para las operaciones comúnes en un intérprete de Lisp, además, el uso de interfaces no solo brinda un código más legible y mantenible, sino que también extensible, ya que si en un futuro se busca cambiar de ArrayList y LinkedList, no es necesario cambiar gran parte del código gracias al mismo uso de ellas.
+
 # Desarrollo
 
 ## Paso 1: Lexer
