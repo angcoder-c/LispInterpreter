@@ -67,6 +67,7 @@ El intérprete soporta las siguientes operadores de Lisp:
 ![image](https://github.com/user-attachments/assets/87d93064-e935-4da0-afe0-ea06b96bde6a)
 
 **Diagramas de secuencia**
+![Diagrama de secuencia](assets/diagrams/Diagrama%20de%20secuencia.png)
 
 **Diagrama de secuencia de la operación DEFUN**
 
