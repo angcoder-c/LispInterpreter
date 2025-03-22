@@ -30,6 +30,15 @@ mvn package
 
 **Correr**
 
+*Bash*
+
+```bash
+mvn exec:java -Dexec.mainClass="com.interpreter.api.App"
+```
+
+
+*PowerShell*
+
 ```bash
 mvn exec:java '-Dexec.mainClass="com.interpreter.api.App"'
 ```
