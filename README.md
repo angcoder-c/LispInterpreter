@@ -1,5 +1,13 @@
 # Java Common Lisp Interpreter 
 
+```
+     _                         ____  _      _
+    | |  __ _ __   __  __ _   / ___|| |    (_) ___  _ __
+ _  | | / _` |\ \ / / / _` | | |    | |    | |/ __|| '_ \
+| |_| || (_| | \ V / | (_| | | |___ | |___ | |\__ \| |_) |
+ \___/  \__,_|  \_/   \__,_|  \____||_____||_||___/| .__/
+                                                   |_|
+```
 [https://github.com/angcoder-c/LispInterpreter/edit/main/README.md](https://github.com/angcoder-c/LispInterpreter/edit/main/README.md)
 
 # Ejecución
@@ -27,7 +35,7 @@ mvn exec:java '-Dexec.mainClass="com.interpreter.api.App"'
 **Test**
 
 ```bash
-mvn -Dtest=AppTest test
+mvn test
 ```
 
 ## Caracteristicas
@@ -49,7 +57,22 @@ El intérprete soporta las siguientes operadores de Lisp:
 
 **Diagrama UML de clases**
 
+![image](https://github.com/user-attachments/assets/44c272c7-ff1a-4134-a7c5-a806e5dffb17)
+
+
 **Diagrama de estados**
+
+![image](https://github.com/user-attachments/assets/87d93064-e935-4da0-afe0-ea06b96bde6a)
+
+**Diagramas de secuencia**
+
+**Diagrama de secuencia de la operación DEFUN**
+
+![WhatsApp Image 2025-03-22 at 08 30 29_1dd4df8b](https://github.com/user-attachments/assets/0f7139fe-7950-44e3-b245-9993a39a7624)
+
+**Diagrama de secuencia de la operación LlamarFuncion**
+
+![image](https://github.com/user-attachments/assets/25eed338-7150-42ff-bebf-6b2e49c2f59d)
 
 # Desarrollo
 
@@ -103,6 +126,8 @@ Se definieron metodo CRUD para controlar el contexto:
 
 **Funcionamiento**
 
+![paso3-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/02c30562-4075-4d10-aeba-b20687be8d5b)
+
 
 ## Paso 4: LispExpression
 
@@ -126,6 +151,7 @@ Además, se implementó el patrón  de diseño Factory mediante `LispExpressionF
 
 **Funcionamiento**
 
+![paso4-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1280ad3e-7aea-41bf-b8a3-f153013e4fef)
 
 
 ## Paso 5: Evaluator
@@ -158,17 +184,13 @@ El evaluador está integrado en `LispList.evaluate()`, que:
 
 **Funcionamiento**
 
+![paso5-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/97e6633f-01ad-4b36-b356-eaa477032a45)
+
 
 ## Paso 6: REPL
 
-El REPL en la clase `App.java`, que proporciona una interfaz para introducir comandos de lisp:
+El REPL en la clase `App.java`, que proporciona una interfaz para introducir comandos de lisp
 
-- `Read`: lee la entrada del usuario mediante un Scanner
-- `Eval`: utiliza el parser para analizar la entrada y evaluarla
-- `Print`: muestra el resultado de la evaluación
-- `Loop`: Repite el proceso hasta que el usuario ingrese `(exit)`
-
-Características:
-
-**Funcionamiento**
+# Licencia
+- MIT
 
