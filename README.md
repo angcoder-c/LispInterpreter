@@ -62,6 +62,9 @@ El intérprete soporta las siguientes operadores de Lisp:
 
 ![WhatsApp Image 2025-03-22 at 08 30 29_1dd4df8b](https://github.com/user-attachments/assets/0f7139fe-7950-44e3-b245-9993a39a7624)
 
+**Diagrama de secuencia de la operación LlamarFuncion**
+
+![image](https://github.com/user-attachments/assets/25eed338-7150-42ff-bebf-6b2e49c2f59d)
 
 # Desarrollo
 
