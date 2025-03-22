@@ -189,10 +189,8 @@ El evaluador está integrado en `LispList.evaluate()`, que:
 
 ## Paso 6: REPL
 
-El REPL en la clase `App.java`, que proporciona una interfaz para introducir comandos de lisp:
+El REPL en la clase `App.java`, que proporciona una interfaz para introducir comandos de lisp
 
-- `Read`: lee la entrada del usuario mediante un Scanner
-- `Eval`: utiliza el parser para analizar la entrada y evaluarla
-- `Print`: muestra el resultado de la evaluación
-- `Loop`: Repite el proceso hasta que el usuario ingrese `(exit)`
+# Licencia
+- MIT
 
