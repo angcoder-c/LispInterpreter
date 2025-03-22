@@ -125,6 +125,7 @@ Se definieron metodo CRUD para controlar el contexto:
 - `eliminarVariable`: permite eliminar una variable del contexto.
 
 **Funcionamiento**
+![paso3-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/02c30562-4075-4d10-aeba-b20687be8d5b)
 
 
 ## Paso 4: LispExpression
@@ -149,6 +150,7 @@ Además, se implementó el patrón  de diseño Factory mediante `LispExpressionF
 
 **Funcionamiento**
 
+![paso4-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1280ad3e-7aea-41bf-b8a3-f153013e4fef)
 
 
 ## Paso 5: Evaluator
@@ -181,6 +183,8 @@ El evaluador está integrado en `LispList.evaluate()`, que:
 
 **Funcionamiento**
 
+![paso5-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/97e6633f-01ad-4b36-b356-eaa477032a45)
+
 
 ## Paso 6: REPL
 
@@ -190,8 +194,4 @@ El REPL en la clase `App.java`, que proporciona una interfaz para introducir com
 - `Eval`: utiliza el parser para analizar la entrada y evaluarla
 - `Print`: muestra el resultado de la evaluación
 - `Loop`: Repite el proceso hasta que el usuario ingrese `(exit)`
-
-Características:
-
-**Funcionamiento**
 
