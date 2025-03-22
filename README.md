@@ -1,5 +1,12 @@
 # Java Common Lisp Interpreter 
 
+     _                         ____  _      _
+    | |  __ _ __   __  __ _   / ___|| |    (_) ___  _ __
+ _  | | / _` |\ \ / / / _` | | |    | |    | |/ __|| '_ \
+| |_| || (_| | \ V / | (_| | | |___ | |___ | |\__ \| |_) |
+ \___/  \__,_|  \_/   \__,_|  \____||_____||_||___/| .__/
+                                                   |_|
+
 [https://github.com/angcoder-c/LispInterpreter/edit/main/README.md](https://github.com/angcoder-c/LispInterpreter/edit/main/README.md)
 
 # Ejecución
