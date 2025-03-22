@@ -24,9 +24,11 @@ import java.util.stream.Collectors;
 
 public class OperacionLlamadaFuncion implements LispOperator {
     private LispExpressionFactory factory;
+    private Environment contexto;
 
     public OperacionLlamadaFuncion (Environment contexto) {
         this.factory = new LispExpressionFactory(contexto);
+        this.contexto = contexto;
     }
 
     @Override
@@ -40,6 +42,10 @@ public class OperacionLlamadaFuncion implements LispOperator {
         List<LispExpression> args, 
         Environment contexto
     ) {
+        if (this.contexto.existeVariable(simbolo)) {
+            LispExpression variable = this.contexto.obtenerVariable(simbolo);
+            return variable.evaluate();
+        }
         if (!contexto.existeFuncion(simbolo)) {
             return this.factory.createAtom(
                 "ERROR: función no definida: " + simbolo

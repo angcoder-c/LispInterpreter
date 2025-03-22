@@ -9,6 +9,7 @@ import com.interpreter.api.Apply.OperacionCond;
 import com.interpreter.api.Apply.OperacionesAritmeticas;
 import com.interpreter.api.Apply.OperacionesSistema;
 import com.interpreter.api.Apply.OperacionQuote;
+import com.interpreter.api.Apply.OperacionSetq;
 import com.interpreter.api.Apply.OperacionDefun;
 import com.interpreter.api.Apply.OperacionLlamadaFuncion;
 import com.interpreter.api.Apply.OperacionesBooleanas;
@@ -51,6 +52,7 @@ public class LispList implements LispExpression {
         this.operadores.add(new OperacionesSistema(this.contexto));
         this.operadores.add(new OperacionesBooleanas(this.contexto));
         this.operadores.add(new OperacionIf(this.contexto));
+        this.operadores.add(new OperacionSetq(this.contexto));
         this.operadores.add(new OperacionesLogicas(this.contexto));
         this.operadores.add(new OperacionCond(this.contexto));
         // siempre abajo
@@ -88,7 +90,7 @@ public class LispList implements LispExpression {
         }
 
         // operador
-        LispExpression first = elementos.get(0).evaluate();
+        LispExpression first = elementos.get(0);//.evaluate();
 
         if (first instanceof LispAtom) {
             String operation = first.toString();
@@ -98,7 +100,6 @@ public class LispList implements LispExpression {
             // luego se le aplica
             for (int i=0; i<operadores.size(); i++) {
                 LispOperator op = operadores.get(i);
-
                 if (op.supports(operation)) {
                     List<LispExpression> args = elementos.subList(1, elementos.size());
                     return op.apply(operation, args, this.contexto);

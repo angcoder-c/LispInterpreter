@@ -86,7 +86,7 @@ public class Environment {
 
     @Override
     public String toString() {
-        if (funciones.isEmpty()) {
+        if (funciones.isEmpty() && variables.isEmpty()) {
             return "---";
         }
         
