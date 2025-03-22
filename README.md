@@ -8,8 +8,7 @@
  \___/  \__,_|  \_/   \__,_|  \____||_____||_||___/| .__/
                                                    |_|
 ```
-[https://github.com/angcoder-c/LispInterpreter/edit/main/README.md](https://github.com/angcoder-c/LispInterpreter/edit/main/README.md)
-
+[https://github.com/angcoder-c/LispInterpreter](https://github.com/angcoder-c/LispInterpreter)
 # Ejecución
 
 **Instalación**
