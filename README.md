@@ -49,7 +49,12 @@ El intérprete soporta las siguientes operadores de Lisp:
 
 **Diagrama UML de clases**
 
+![image](https://github.com/user-attachments/assets/44c272c7-ff1a-4134-a7c5-a806e5dffb17)
+
+
 **Diagrama de estados**
+
+![image](https://github.com/user-attachments/assets/87d93064-e935-4da0-afe0-ea06b96bde6a)
 
 # Desarrollo
 
