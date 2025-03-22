@@ -62,7 +62,7 @@ public class Lexer {
         boolean numeroFlag = false;
         boolean puntoFlag = false;
     
-        List<String> operadores = List.of("<=", ">=", "==", "!=", "+", "-", "*", "/", "%");
+        List<String> operadores = List.of("<=", ">=", "==", "/=", "+", "-", "*", "/", "%");
     
         for (int i = 0; i < caracteres.length; i++) {
             char x = caracteres[i];
