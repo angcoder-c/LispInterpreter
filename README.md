@@ -27,7 +27,7 @@ mvn exec:java '-Dexec.mainClass="com.interpreter.api.App"'
 **Test**
 
 ```bash
-mvn -Dtest=AppTest test
+mvn test
 ```
 
 ## Caracteristicas
@@ -58,7 +58,8 @@ El intérprete soporta las siguientes operadores de Lisp:
 
 **Diagramas de secuencia**
 
-*Diagrama de secuencia de la operación DEFUN*
+**Diagrama de secuencia de la operación DEFUN**
+
 ![WhatsApp Image 2025-03-22 at 08 30 29_1dd4df8b](https://github.com/user-attachments/assets/0f7139fe-7950-44e3-b245-9993a39a7624)
 
 
