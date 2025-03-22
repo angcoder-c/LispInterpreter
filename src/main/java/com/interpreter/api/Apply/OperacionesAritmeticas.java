@@ -22,14 +22,22 @@ public class OperacionesAritmeticas implements LispOperator {
     private LispExpressionFactory factory;
     private Environment contexto;
 
+    /**
+     * Constructor correspondiente
+     * @param contexto el contexto donde se desarrollarán las operaciones
+     */
     public OperacionesAritmeticas (Environment contexto) {
         this.contexto = contexto;
         this.factory = new LispExpressionFactory(contexto);
     }
 
+    /**
+     * Verifica que el simbolo ingresado como argumento sean los reservados de las operacioens aritméticas
+     * @param simbolo el simbolo de la operacion aritmetica a realizar
+     * @return verdadero si se soporta el operador, falso si no se soporta
+     */
     @Override
     public boolean supports(String simbolo) {
-        // System.out.println(simbolo);
         return (
             simbolo.equals("+") || 
             simbolo.equals("-") || 
@@ -38,6 +46,13 @@ public class OperacionesAritmeticas implements LispOperator {
         );
     }
 
+    /**
+     * Aplica una operación básica a dos operandos
+     * @param simbolo El simbolo que representa la operacion aritmética a realizar
+     * @param args Una lista de que contiene los operandos
+     * @param contexto el entorno donde se evalúan las operaciones
+     * @return el resultado de la operación aritmética como un lispnumber
+     */
     @Override
     public LispExpression apply(String simbolo, List<LispExpression> args, Environment contexto) {
         if (args.size() < 2) {

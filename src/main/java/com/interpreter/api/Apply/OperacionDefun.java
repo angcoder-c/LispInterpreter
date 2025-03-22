@@ -25,15 +25,30 @@ import java.util.List;
 public class OperacionDefun implements LispOperator {
     private LispExpressionFactory factory;
 
+    /**
+     * Constructor correspondiente
+     * @param contexto el contexto donde se definirá la nueva función
+     */
     public OperacionDefun (Environment contexto) {
         this.factory = new LispExpressionFactory(contexto);
     }
-
+    /**
+     * Verifica que el simbolo ingresado como argumento sea el reservado para la operación defun 
+     * @param symbol el operador para definir una funcion (defun)
+     * @return verdadero si se soporta el operador, falso si no se soporta
+     */
     @Override
     public boolean supports(String symbol) {
         return symbol.toLowerCase().equals("defun");
     }
 
+    /**
+     * Define una nueva función en el contexto indicado
+     * @param symbol el simbolo que representa la operación (defun)
+     * @param args una lista de expresiones con el nombre de la funcion (primer elemento) y la lista de parámetros (segundo elemento)
+     * @param contexto el entorno donde se define la nueva función
+     * @return el átomo con el nombre de la función en caso se haya definido correctamente
+     */
     @Override
     public LispExpression apply(String symbol, List<LispExpression> args, Environment contexto) {
         if (args.size() < 3) {

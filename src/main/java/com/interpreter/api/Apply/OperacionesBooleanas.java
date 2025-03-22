@@ -22,10 +22,18 @@ import java.util.List;
 public class OperacionesBooleanas implements LispOperator {
     private LispExpressionFactory factory;
 
+    /**
+     * Constructor correspondiente
+     * @param contexto entorno dondese desarrollaran las operaciones
+     */
     public OperacionesBooleanas(Environment contexto) {
         this.factory = new LispExpressionFactory(contexto);
     }
-
+    /**
+     * Verifica que el simbolo ingresado sean los reservados para las operaciones booleanas
+     * @param simbolo el simbolo que representa la operacion booleana a realizar
+     * @return true si el simbolo es soportado, false si no
+     */
     @Override
     public boolean supports(String simbolo) {
         return (
@@ -37,7 +45,13 @@ public class OperacionesBooleanas implements LispOperator {
             simbolo.equals("/=")
         );
     }
-
+    /**
+     * Evalúa los distintos argumentos para realzar las operaciones booleanas correspondientes
+     * @param simbolo el comparador lógico a realizar
+     * @param args una lista de expresiones con los dos operandos a comparar
+     * @param contexto el entorno donde se evaluan las expresiones
+     * @return Un átomo que contiene true o false según las comparaciones
+     */
     @Override
     public LispExpression apply(String simbolo, List<LispExpression> args, Environment contexto) {
         if (args.size() != 2) {

@@ -26,16 +26,31 @@ public class OperacionLlamadaFuncion implements LispOperator {
     private LispExpressionFactory factory;
     private Environment contexto;
 
+    /**
+     * Constructor correspondiente
+     * @param contexto entorno donde se llama a la función
+     */
     public OperacionLlamadaFuncion (Environment contexto) {
         this.factory = new LispExpressionFactory(contexto);
         this.contexto = contexto;
     }
 
+    /**
+     * método para cumplir con el contrato de la interface
+     */
     @Override
     public boolean supports(String simbolo) {
         return true;
     }
 
+    /**
+     * Evalua una expresión que puede ser una variable o una llamada a una funcion
+     * Si es una variable, se devuelve su valor evaluado. En caso de ser una función, evalúa los argumentos y llama a la función.
+     * @param simbolo el simbolo que representa la función a evaluar o variable
+     * @param args lista de expresiones con los argumentos para la función
+     * @param contexto entorno en el que se evalúan las expresiones
+     * @return la llamada a la función o el resultado de evaluar la variable
+     */
     @Override
     public LispExpression apply(
         String simbolo, 

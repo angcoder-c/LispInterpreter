@@ -23,11 +23,20 @@ public class OperacionIf implements LispOperator {
     private LispExpressionFactory factory;
     private Environment contexto;
 
+    /**
+     * Construtor correspondiente
+     * @param contexto el contexto donde se desarrollará el if
+     */
     public OperacionIf(Environment contexto) {
         this.contexto = contexto;
         this.factory = new LispExpressionFactory(contexto);
     }
 
+    /**
+     * Verifica que el simbolo ingresado sea el correspondiente para las condiciones (if)
+     * @param simbolo simbolo a verificar para empezar la condicional (if)
+     * @return verdadero si el simbolo ingresado es "if"
+     */
     @Override
     public boolean supports(String symbol) {
         return symbol.toLowerCase().equals("if");

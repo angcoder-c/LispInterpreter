@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public interface LispOperator {
-    // operador soportada por el interprete
+    // operador soportado por el interprete
     boolean supports(String simbolo);
 
     // aplicar la funcion del operador

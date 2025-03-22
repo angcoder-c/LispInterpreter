@@ -20,8 +20,6 @@ import java.util.Arrays;
  * Descripción: Pruebas con JUnit para los métodos de las operaciones aritméticas
  */
 
-
- 
  class OperacionesAritmeticasTest {
  
      private OperacionesAritmeticas operaciones;
@@ -42,6 +40,7 @@ import java.util.Arrays;
      /**
      * Se comprueba que las verificaciones de operadores sean correctas
      */
+
     @Test
      void testSupports() {
          assertTrue(operaciones.supports("+"));

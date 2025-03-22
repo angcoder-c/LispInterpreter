@@ -23,12 +23,19 @@ public class OperacionesLogicas implements LispOperator {
     private LispExpressionFactory factory;
 
     /**
-     * @param contexto
+     * Constructor correspondiente
+     * @param contexto entorno donde se desarrollarán las operaciones lógicas
      */
     public OperacionesLogicas(Environment contexto) {
         this.factory = new LispExpressionFactory(contexto);
     }
 
+
+    /**
+     * Verifica que el simbolo ingresado sea uno de los reservados para las operaciones lógicas
+     * @param simbolo el operador lógico a realizar
+     * @return verdadero si se puede llevar a cabo la operación lógica, false si no
+     */
     @Override
     public boolean supports(String simbolo) {
         return (
@@ -39,11 +46,11 @@ public class OperacionesLogicas implements LispOperator {
     }
 
     /**
-     * aplica la operación lógica especificada
+     * Aplica la operación lógica especificada
      * @param simbolo operador a aplicar.
-     * @param args 
-     * @param contexto 
-     * @return el resultado de la operación lógica 
+     * @param args la lista de expresiones con los dos valores a comparar
+     * @param contexto entorno donde se desarrolla la operacion
+     * @return el resultado de la operación lógica en forma de átomo (true o false)
      */
     @Override
     public LispExpression apply(String simbolo, List<LispExpression> args, Environment contexto) {
@@ -64,7 +71,7 @@ public class OperacionesLogicas implements LispOperator {
     }
 
     /**
-     * operación not
+     * Operación NOT
      * @param expr La expresión a evaluar.
      * @return "true" si expr es falsa, "false" si expr es verdadera.
      */
@@ -77,10 +84,10 @@ public class OperacionesLogicas implements LispOperator {
     }
 
     /**
-     * operación and
-     * @param args
-     * @param contexto 
-     * @return true si todos los argumentos son verdaderos
+     * Operación AND
+     * @param args las expresión a comparar
+     * @param contexto el entorno donde se desarrollan las operaciones
+     * @return true si todos los argumentos son verdaderos, false por lo contrario
      */
     private LispExpression evaluateAnd(List<LispExpression> args, Environment contexto) {
         if (args.isEmpty()) {
@@ -102,10 +109,9 @@ public class OperacionesLogicas implements LispOperator {
     }
 
     /**
-     * operación or
-     * 
-     * @param args
-     * @param contexto
+     * Operación OR
+     * @param args la lista de expresiones a comparar 
+     * @param contexto el contexto donde se realizarán las comparaciones
      * @return true si al menos uno es verdadero
      */
     private LispExpression evaluateOr(List<LispExpression> args, Environment contexto) {
@@ -125,8 +131,8 @@ public class OperacionesLogicas implements LispOperator {
     }
 
     /**
-     * determina si una expresión es verdadera.
-     * @param expr 
+     * Determina si una expresión es verdadera.
+     * @param expr el valor booleano a comprobar
      * @return true si expr es distinta de "nil", "false" o "0"
      */
     private boolean isTrue(LispExpression expr) {
