@@ -125,6 +125,7 @@ Se definieron metodo CRUD para controlar el contexto:
 - `eliminarVariable`: permite eliminar una variable del contexto.
 
 **Funcionamiento**
+
 ![paso3-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/02c30562-4075-4d10-aeba-b20687be8d5b)
 
 
